@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LocationListViewController.swift
 //  WeatherGift
 //
 //  Created by Yi Li on 3/22/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LocationListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var editBarButton: UIBarButtonItem!
     @IBOutlet weak var addBarButton: UIBarButtonItem!
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
+extension LocationListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return weatherLocations.count
     }
