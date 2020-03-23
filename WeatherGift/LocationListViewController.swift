@@ -66,7 +66,7 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = weatherLocations[indexPath.row].name
-        cell.detailTextLabel?.text = "Lat:\(weatherLocations[indexPath.row].latitude), Long\(weatherLocations[indexPath.row].longtitude)"
+        cell.detailTextLabel?.text = "Lat:\(weatherLocations[indexPath.row].latitude), Long:\(weatherLocations[indexPath.row].longtitude)"
         return cell
     }
     
