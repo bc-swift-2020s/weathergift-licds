@@ -36,7 +36,8 @@ class LocationDetailViewController: UIViewController {
                 self.dateLabel.text = weatherDetail.timezone
                 self.placeLabel.text = weatherDetail.name
                 self.temperatureLabel.text = "\(weatherDetail.temperature)"
-                self.summaryLabel.text = weatherDetail.summary 
+                self.summaryLabel.text = weatherDetail.summary
+                self.imageView.image = UIImage(named: weatherDetail.dailyIcon)
             }
         }
     }
