@@ -113,8 +113,20 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem title="About" id="eeA-w2-zwp"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TjM-IA-D0q"/>
+                                    <barButtonItem style="plain" id="zdV-6a-rg4">
+                                        <pageControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="BLI-nX-IaY">
+                                            <rect key="frame" x="73" y="4" width="185" height="37"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="pageIndicatorTintColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="pageControlTapped:" destination="bcM-s3-32t" eventType="valueChanged" id="Fml-d0-RZi"/>
+                                                <action selector="unwindFromLocationListViewControllerWithSegue:" destination="bcM-s3-32t" eventType="valueChanged" id="Zud-Df-J1F"/>
+                                            </connections>
+                                        </pageControl>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8l0-47-0zC"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="fNO-32-I1l"/>
                                     <barButtonItem title="Bar Button Item" image="list.bullet" catalog="system" id="JHZ-hb-XEC">
                                         <connections>
                                             <segue destination="BYZ-38-t0r" kind="presentation" modalPresentationStyle="fullScreen" id="lgc-se-Amd"/>
@@ -179,6 +191,7 @@
                     <connections>
                         <outlet property="dateLabel" destination="vnt-RP-KSO" id="XZg-FI-BoL"/>
                         <outlet property="imageView" destination="sTZ-fT-zah" id="lVf-F6-VE4"/>
+                        <outlet property="pageControl" destination="BLI-nX-IaY" id="QnY-Hg-lWQ"/>
                         <outlet property="placeLabel" destination="U5V-va-Pe9" id="TWF-wu-ddT"/>
                         <outlet property="summaryLabel" destination="5ym-nN-KnW" id="Uyn-9C-ie8"/>
                         <outlet property="temperatureLabel" destination="TlQ-Kb-EFS" id="Nj9-1P-Gqx"/>
