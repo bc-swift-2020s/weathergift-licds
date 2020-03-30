@@ -15,6 +15,7 @@ private let dateFormatter: DateFormatter = {
     dateFormatter.dateFormat = " EEEE, MMM d, h:mm aaa"
     return dateFormatter
 } ()
+
 class LocationDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var placeLabel: UILabel!
