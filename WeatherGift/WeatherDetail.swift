@@ -9,10 +9,17 @@
 import Foundation
 
  private let dateFormatter: DateFormatter = {
-     print("I just created a time formatter!")
+     print("I just created a date formatter!")
      let dateFormatter = DateFormatter()
      dateFormatter.dateFormat = " EEEE"
      return dateFormatter
+ } ()
+ 
+ private let hourlyFormatter: DateFormatter = {
+     print("I just created an hourly formatter!")
+     let hourlyFormatter = DateFormatter()
+     hourlyFormatter.dateFormat = "ha"
+     return hourlyFormatter
  } ()
  
  struct DailyWeather: Codable {
@@ -23,12 +30,19 @@ import Foundation
     var dailyLow: Int
  }
  
+ struct HourlyWeather: Codable {
+    var hourlyIcon: String
+    var hour: String
+    var hourlyTemperature: Int
+    var hourlyPrecipProbability: Int
+ }
  class WeatherDetail: WeatherLocation {
     
     private struct Result: Codable {
         var timezone: String
         var currently: Currently
         var daily: Daily
+        var hourly: Hourly
     }
     
     private struct Currently: Codable {
@@ -49,12 +63,24 @@ import Foundation
         var temperatureHigh: Double
         var temperatureLow: Double
     }
+    
+    private struct Hourly: Codable {
+        var data: [HourlyData]
+    }
+    
+    private struct HourlyData: Codable {
+        var time: TimeInterval
+        var icon: String
+        var precipProbability: Double
+        var temperature: Double
+    }
     var timezone = ""
     var currentTime = 0.0
     var temperature = 0
     var summary = ""
     var dailyIcon = ""
     var dailyWeatherData: [DailyWeather] = []
+    var hourlyWeatherData: [HourlyWeather] = []
     
     func getData(completed: @escaping () -> () ) {
            let coordinates = "\(latitude),\(longtitude)"
@@ -96,8 +122,19 @@ import Foundation
                         let dailyLow = Int(response.daily.data[index].temperatureLow.rounded())
                         let dailyWeather = DailyWeather(dailyIcon: dailyIcon, dailyWeekday: dailyWeekday, dailySummary: dailySummary, dailyHigh: dailyHigh, dailyLow: dailyLow)
                         self.dailyWeatherData.append(dailyWeather)
-                        print("Date: \(dailyWeather.dailyWeekday) High: \(dailyWeather.dailyHigh) Low: \(dailyWeather.dailyLow)")
+                        print("Date: \(dailyWeather.dailyWeekday), High: \(dailyWeather.dailyHigh), Low: \(dailyWeather.dailyLow)")
                     }
+                for index in 0..<response.hourly.data.count {
+                    let hourlyDate = Date(timeIntervalSince1970: response.hourly.data[index].time)
+                    hourlyFormatter.timeZone = TimeZone(identifier: response.timezone)
+                    let hour = hourlyFormatter.string(from: hourlyDate)
+                    let hourlyIcon = response.hourly.data[index].icon
+                    let hourlyPrecipProbability = Int((response.hourly.data[index].precipProbability * 100).rounded())
+                    let temperature = Int(response.hourly.data[index].temperature.rounded())
+                    let hourlyWeather = HourlyWeather(hourlyIcon: hourlyIcon, hour: hour, hourlyTemperature: temperature, hourlyPrecipProbability: hourlyPrecipProbability)
+                    self.hourlyWeatherData.append(hourlyWeather)
+                    print("Hour: \(hourlyWeather.hour), Icon: \(hourlyWeather.hourlyIcon), Temperature: \(hourlyWeather.hourlyTemperature), PrecipProbability: \(hourlyWeather.hourlyPrecipProbability)")
+                }
                } catch {
                     print("JSON ERROR: \(error.localizedDescription)")
                }
