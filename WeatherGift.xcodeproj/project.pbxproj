@@ -22,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0409EFAE24322FD900CFA0CD /* Dates and Time.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Dates and Time.playground"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		04699B1024283057001BF1B0 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		04699B1224291AED001BF1B0 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		0496C79F2428005E00B161D3 /* WeatherGift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherGift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +82,7 @@
 				04E5B7642429395A00139A88 /* WeatherDetail.swift */,
 				04699B1224291AED001BF1B0 /* PageViewController.swift */,
 				04699B1024283057001BF1B0 /* LocationDetailViewController.swift */,
+				0409EFAE24322FD900CFA0CD /* Dates and Time.playground */,
 				0496C7AB2428005F00B161D3 /* Assets.xcassets */,
 				0496C7AD2428005F00B161D3 /* LaunchScreen.storyboard */,
 				0496C7B02428005F00B161D3 /* Info.plist */,

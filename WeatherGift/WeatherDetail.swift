@@ -18,6 +18,7 @@ import Foundation
     
     struct Currently: Codable{
         var temperature: Double
+        var time: TimeInterval
     }
     
     struct Daily: Codable{
@@ -26,9 +27,11 @@ import Foundation
     }
     
     var timezone = ""
+    var currentTime = 0.0
     var temperature = 0
     var summary = ""
     var dailyIcon = ""
+    
     
     func getData(completed: @escaping () -> () ) {
            let coordinates = "\(latitude),\(longtitude)"
@@ -56,6 +59,7 @@ import Foundation
                do {
                     let result = try JSONDecoder().decode(Result.self, from: data!)
                     self.timezone = result.timezone
+                    self.currentTime = result.currently.time
                     self.temperature = Int(result.currently.temperature.rounded())
                     self.summary = result.daily.summary
                     self.dailyIcon = result.daily.icon
